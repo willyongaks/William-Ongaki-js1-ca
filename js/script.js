@@ -15,12 +15,23 @@ async function getMenuPlan() {
 
         for(let i = 0; i < results.length; i++){
 
-        const body = document.body
-        const div = document.createElement("div");
-        body.append(div);
-        div.innerHTML = `${results[i].title}`
-        
-            console.log(results[i])
+            const body = document.body
+            const loading = document.createElement("div")
+            body.append(loading);
+            loading.classList.add("loading");
+            loading.innerHTML = ``;
+            
+            const container = document.createElement("div");
+            body.append(container);
+                container.innerHTML = `<hr>
+                TITLE: <br>${results[i].title} <br></br>
+                PUBLISHER: <br>${results[i].publisher}<br></br>
+                RELEASE DATE:<br> ${results[i].release_date}<br></br>
+                DESCRIPTION:<br>${results[i].short_description}<br></br>
+                THUMBNAIL LINK:<br> ${results[i].thumbnail}
+                </hr> `
+            
+                console.log(results[i])
 
         }
         
@@ -30,7 +41,9 @@ async function getMenuPlan() {
 
 
     }
-    catch {
+    catch(error) {
+        loading.innerHTML = "error"
+        console.log("error")
 
     }
 }
