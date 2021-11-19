@@ -11,6 +11,8 @@ async function getMenuPlan() {
 
         console.log(results);
 
+        
+
 
 
         for(let i = 0; i < results.length; i++){
