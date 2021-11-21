@@ -4,7 +4,7 @@ const proxy = "https://noroffcors.herokuapp.com/"
 const corsFix = proxy + url ;
 
 
-async function getMenuPlan() {
+async function fetchGame() {
     try {
         const response = await fetch(corsFix);
         const results = await response.json();
@@ -47,4 +47,4 @@ async function getMenuPlan() {
     }
 }
 
-getMenuPlan();
+fetchGame();
