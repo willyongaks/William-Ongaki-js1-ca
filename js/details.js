@@ -1,5 +1,5 @@
 const navigation = document.querySelector(".navigation")
-navigation.innerHTML = `<a href = "index.html">Back</a>`
+navigation.innerHTML = `<a href = "index.html"> <strong>< </strong>Back</a>`
 
 const detailscontainer = document.querySelector(".details-results")
 const params = new URLSearchParams(document.location.search)

@@ -9,3 +9,35 @@ div{
 
 }
 
+.submitForm {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    padding: 4em;
+    line-height: 3;
+    border: 2px solid black;
+}
+
+input{
+      margin: 5px 0 10px;
+      font-size: 1rem;
+    
+}
+
+
+label,input{
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+
+button{
+    align-items: center;
+    padding: 15px 6em ;
+    align-content: center;
+    justify-content: center;
+
+}
+

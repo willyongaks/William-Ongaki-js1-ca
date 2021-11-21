@@ -13,9 +13,7 @@ for (platform of platforms){
     header.append(btn)
 }
 
-//document.getElementById("all").onclick = fetchGame("all")
-//document.getElementById("pc").onclick = fetchGame("pc")
-//document.getElementById("browser").onclick = fetchGame("browser")
+
 
 async function fetchGame(evt) {
     try {
@@ -50,6 +48,8 @@ async function fetchGame(evt) {
                 PUBLISHER: <br>${results[i].publisher}<br></br>
                 RELEASE DATE:<br> ${results[i].release_date}<br></br>
                 <a href="details.html?id=${results[i].id}"> More details... </a></br>
+                <a href="contact.html"> Contact us </a>
+                
                 </hr> `
             
             
@@ -62,9 +62,7 @@ async function fetchGame(evt) {
 
     }
     catch(error) {
-        //loading.innerHTML = "error"
         console.log(error)
 
     }
 }
-//fetchGame("all");
