@@ -40,4 +40,13 @@ button{
     justify-content: center;
 
 }
-
+.details-results{
+    padding: 10px;
+    width: 70%;
+    line-height: 20px;
+   
+}
+.navigation a{
+    color: red;
+    
+}
