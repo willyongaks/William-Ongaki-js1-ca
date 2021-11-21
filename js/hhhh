@@ -1,0 +1,17 @@
+
+            const body = document.body
+            const loading = document.createElement("div")
+            body.append(loading);
+            loading.classList.add("loading");
+            loading.innerHTML = ``;
+            
+            const container = document.createElement("div");
+            body.append(container);
+                container.innerHTML = `<hr>
+                <br> ${results[i].title} - ${results[i].platform} </h2>
+                PUBLISHER: <br>${results[i].publisher}<br></br>
+                RELEASE DATE:<br> ${results[i].release_date}<br></br>
+                More details:<br>${results[i].short_description}<br></br>
+                </hr> `
+            
+                console.log(results[i])

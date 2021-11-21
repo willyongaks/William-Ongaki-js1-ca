@@ -1,6 +1,11 @@
-const detailscontainer = document.querySelector(".details-results")
+const navigation = document.querySelector(".navigation")
+navigation.innerHTML = `<a href = "index.html">Back</a>`
 
-const url = "https://www.freetogame.com/api/games?category=shooter"
+const detailscontainer = document.querySelector(".details-results")
+const params = new URLSearchParams(document.location.search)
+var id = params.get("id");
+
+const url = "https://www.freetogame.com/api/game?id=" + id
 const proxy = "https://noroffcors.herokuapp.com/"
 
 const corsFix = proxy + url;
@@ -21,5 +26,9 @@ async function fetchGame(){
 fetchGame();
 
 function createhtml(results){
-    detailscontainer.innerHTML = ` <h1> ${results.title}</h1>`
+   detailscontainer.innerHTML = ` <h1> ${results.title}</h1>
+                                <img src="${results.thumbnail}" >
+                                <br>${results.description}<br></br>
+                                <div class="resultsdescription"> ${results.minimum_system_requirements.graphics}</div>
+    `
 }

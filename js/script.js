@@ -1,37 +1,58 @@
-const url = "https://www.freetogame.com/api/games?category=shooter"
-const proxy = "https://noroffcors.herokuapp.com/"
 
-const corsFix = proxy + url ;
+const header = document.querySelector(".header")
+header.innerHTML = `<h1> Here we curate the best games. </h1>
+                                <br>Platform</br>
+        `
+var platforms = ["all", "pc", "browser"]
+for (platform of platforms){
+    var btn = document.createElement("button")
+    btn.innerHTML = platform
+    btn.platform=platform
+    btn.id=platform
+    btn.addEventListener("click", fetchGame)
+    header.append(btn)
+}
 
+//document.getElementById("all").onclick = fetchGame("all")
+//document.getElementById("pc").onclick = fetchGame("pc")
+//document.getElementById("browser").onclick = fetchGame("browser")
 
-async function fetchGame() {
+async function fetchGame(evt) {
     try {
+        document.close()
+        let url;
+        platform= evt.currentTarget.platform
+        console.log(platform)
+        if (platform === "all"){
+            url = "https://www.freetogame.com/api/games/"
+
+        }else{
+            url = "https://www.freetogame.com/api/games?platform=" + platform
+        }
+        const proxy = "https://noroffcors.herokuapp.com/"
+
+        const corsFix = proxy + url;
         const response = await fetch(corsFix);
         const results = await response.json();
 
-        console.log(results);
-
-
-        for(let i = 0; i < results.length; i++){
-
-            const body = document.body
-            const loading = document.createElement("div")
-            body.append(loading);
-            loading.classList.add("loading");
-            loading.innerHTML = ``;
             
+        for(let i = 0; i < results.length; i++){
+            const body = document.body
+            const indexHtml = document.createElement("div")
+            body.append(indexHtml);
+            indexHtml.classList.add("indexHtml");
+            indexHtml.innerHTML = ``;
+
             const container = document.createElement("div");
             body.append(container);
-                container.innerHTML = `<hr>
-                TITLE: <br>${results[i].title} <br></br>
+            container.innerHTML = `<hr>
+                <br> ${results[i].title} - ${results[i].platform}
                 PUBLISHER: <br>${results[i].publisher}<br></br>
                 RELEASE DATE:<br> ${results[i].release_date}<br></br>
-                DESCRIPTION:<br>${results[i].short_description}<br></br>
-                THUMBNAIL LINK:<br> ${results[i].thumbnail}
+                <a href="details.html?id=${results[i].id}"> More details... </a></br>
                 </hr> `
             
-                console.log(results[i])
-
+            
         }
         
         
@@ -41,10 +62,9 @@ async function fetchGame() {
 
     }
     catch(error) {
-        loading.innerHTML = "error"
-        console.log("error")
+        //loading.innerHTML = "error"
+        console.log(error)
 
     }
 }
-
-fetchGame();
+//fetchGame("all");
